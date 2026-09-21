@@ -12,6 +12,13 @@ class UpdateProgramRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation(): void
+    {
+        if ($this->has('code')) {
+            $this->merge(['code' => strtoupper(trim($this->code))]);
+        }
+    }
+
     public function rules(): array
     {
         $programId = $this->route('program')->id;

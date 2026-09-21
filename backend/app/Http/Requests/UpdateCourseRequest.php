@@ -12,6 +12,13 @@ class UpdateCourseRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation(): void
+    {
+        if ($this->has('course_code')) {
+            $this->merge(['course_code' => strtoupper(trim($this->course_code))]);
+        }
+    }
+
     public function rules(): array
     {
         $courseId = $this->route('course')->id;

@@ -20,4 +20,11 @@ class StoreProgramRequest extends FormRequest
             'status' => ['nullable', 'in:active,inactive'],
         ];
     }
+    
+    protected function prepareForValidation(): void
+{
+    if ($this->has('code')) {
+        $this->merge(['code' => strtoupper($this->code)]);
+    }
+}
 }

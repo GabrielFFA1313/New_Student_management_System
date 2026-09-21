@@ -1,6 +1,6 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
-import './Layout.css';
+import '../styles/Layout.css';
 
 const NAV_ITEMS = [
   { to: '/dashboard', label: 'Dashboard', roles: ['administrator', 'registrar', 'instructor', 'student'] },

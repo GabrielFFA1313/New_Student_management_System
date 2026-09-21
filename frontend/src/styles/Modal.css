@@ -1,0 +1,73 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background-color: #1a1d24;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.9rem;
+  font-size: 0.85rem;
+  color: #a1a1aa;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #3f3f46;
+  background-color: #0f1115;
+  color: #e4e4e7;
+  font-size: 0.9rem;
+}
+
+.field-error {
+  color: #f87171;
+  font-size: 0.75rem;
+}
+
+.error-banner {
+  background-color: #7f1d1d33;
+  color: #f87171;
+  padding: 0.6rem 0.9rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
+
+.modal-actions button {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #3f3f46;
+  background-color: transparent;
+  color: #e4e4e7;
+  cursor: pointer;
+}
