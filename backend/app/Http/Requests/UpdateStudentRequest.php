@@ -23,8 +23,8 @@ class UpdateStudentRequest extends FormRequest
             'last_name' => ['sometimes', 'required', 'string', 'max:100'],
             'suffix' => ['nullable', 'string', 'max:20'],
             'birth_date' => ['nullable', 'date', 'before:today'],
-            'email' => ['nullable', 'email', 'max:255'],
-            'contact_number' => ['nullable', 'string', 'max:20'],
+            'email' => ['nullable', 'email', 'max:255', Rule::unique('students', 'email')->ignore($studentId)],
+            'contact_number' => ['nullable', 'string', 'max:20', 'unique:students,contact_number'],
             'address' => ['nullable', 'string', 'max:255'],
             'program_id' => ['sometimes', 'required', 'integer', 'exists:programs,id'],
             'year_level' => ['sometimes', 'required', 'integer', 'min:1', 'max:6'],
@@ -38,4 +38,10 @@ class UpdateStudentRequest extends FormRequest
             'program_id.exists' => 'The selected program does not exist.',
         ];
     }
+    protected function prepareForValidation(): void
+{
+    if ($this->has('email') && $this->email) {
+        $this->merge(['email' => strtolower(trim($this->email))]);
+    }
+}
 }

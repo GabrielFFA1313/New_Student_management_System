@@ -20,7 +20,7 @@ class StoreStudentRequest extends FormRequest
             'last_name' => ['required', 'string', 'max:100'],
             'suffix' => ['nullable', 'string', 'max:20'],
             'birth_date' => ['nullable', 'date', 'before:today'],
-            'email' => ['nullable', 'email', 'max:255'],
+            'email' => ['nullable', 'email', 'max:255', 'unique:students,email'],
             'contact_number' => ['nullable', 'string', 'max:20'],
             'address' => ['nullable', 'string', 'max:255'],
             'program_id' => ['required', 'integer', 'exists:programs,id'],
@@ -35,4 +35,10 @@ class StoreStudentRequest extends FormRequest
             'program_id.exists' => 'The selected program does not exist.',
         ];
     }
+    protected function prepareForValidation(): void
+{
+    if ($this->has('email') && $this->email) {
+        $this->merge(['email' => strtolower(trim($this->email))]);
+    }
+}
 }
