@@ -1,14 +1,15 @@
 .layout {
   display: flex;
   min-height: 100vh;
-  background-color: #0f1115;
-  color: #e4e4e7;
+  width: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 .sidebar {
   width: 240px;
-  background-color: #171a21;
-  border-right: 1px solid #2a2d35;
+  background-color: var(--color-bg-surface);
+  border-right: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -16,13 +17,14 @@
 
 .sidebar-header {
   padding: 1.25rem 1.5rem;
-  border-bottom: 1px solid #2a2d35;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .sidebar-header h2 {
   margin: 0;
   font-size: 1.1rem;
   letter-spacing: 0.05em;
+  color: var(--color-primary);
 }
 
 .sidebar-nav {
@@ -36,20 +38,20 @@
 .nav-link {
   padding: 0.6rem 0.9rem;
   border-radius: 6px;
-  color: #a1a1aa;
+  color: var(--color-text-muted);
   text-decoration: none;
   font-size: 0.9rem;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .nav-link:hover {
-  background-color: #22252d;
-  color: #e4e4e7;
+  background-color: #eef2f7;
+  color: var(--color-text);
 }
 
 .nav-link.active {
-  background-color: #2563eb;
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary);
 }
 
 .main-area {
@@ -65,8 +67,8 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem 1.5rem;
-  border-bottom: 1px solid #2a2d35;
-  background-color: #171a21;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg-elevated);
 }
 
 .user-info {
@@ -79,35 +81,38 @@
 .user-name {
   font-weight: 600;
   font-size: 0.9rem;
+  color: var(--color-text);
 }
 
 .user-role {
   font-size: 0.75rem;
-  color: #a1a1aa;
+  color: var(--color-text-muted);
   text-transform: capitalize;
 }
 
 .logout-btn {
   padding: 0.5rem 1rem;
-  border: 1px solid #3f3f46;
+  border: 1px solid var(--color-border);
   background-color: transparent;
-  color: #e4e4e7;
+  color: var(--color-text);
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.85rem;
 }
 
 .logout-btn:hover {
-  background-color: #2a2d35;
+  background-color: var(--color-accent);
+  border-color: var(--color-accent-hover);
+  color: var(--color-text);
 }
 
 .content {
   flex: 1;
   padding: 1.5rem 2rem;
   overflow-y: auto;
+  background-color: var(--color-bg);
 }
 
-/* Responsive: collapse sidebar to a top bar on narrow screens (section 14) */
 @media (max-width: 768px) {
   .layout {
     flex-direction: column;
@@ -116,7 +121,7 @@
   .sidebar {
     width: 100%;
     border-right: none;
-    border-bottom: 1px solid #2a2d35;
+    border-bottom: 1px solid var(--color-border);
   }
 
   .sidebar-nav {

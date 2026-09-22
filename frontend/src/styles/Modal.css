@@ -1,7 +1,7 @@
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(30, 41, 59, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,17 +9,20 @@
 }
 
 .modal-content {
-  background-color: #1a1d24;
+  background-color: var(--color-bg-elevated);
   padding: 1.5rem;
   border-radius: 10px;
   width: 100%;
   max-width: 420px;
   max-height: 90vh;
   overflow-y: auto;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 10px 30px rgba(30, 41, 59, 0.15);
 }
 
 .modal-content h2 {
   margin-top: 0;
+  color: var(--color-text);
 }
 
 .modal-content form label {
@@ -28,7 +31,7 @@
   gap: 0.3rem;
   margin-bottom: 0.9rem;
   font-size: 0.85rem;
-  color: #a1a1aa;
+  color: var(--color-text-muted);
 }
 
 .modal-content input,
@@ -36,20 +39,27 @@
 .modal-content select {
   padding: 0.5rem 0.7rem;
   border-radius: 6px;
-  border: 1px solid #3f3f46;
-  background-color: #0f1115;
-  color: #e4e4e7;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   font-size: 0.9rem;
 }
 
+.modal-content input:focus,
+.modal-content textarea:focus,
+.modal-content select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
 .field-error {
-  color: #f87171;
+  color: var(--color-danger);
   font-size: 0.75rem;
 }
 
 .error-banner {
-  background-color: #7f1d1d33;
-  color: #f87171;
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger);
   padding: 0.6rem 0.9rem;
   border-radius: 6px;
   margin-bottom: 1rem;
@@ -66,8 +76,8 @@
 .modal-actions button {
   padding: 0.5rem 1rem;
   border-radius: 6px;
-  border: 1px solid #3f3f46;
+  border: 1px solid var(--color-border);
   background-color: transparent;
-  color: #e4e4e7;
+  color: var(--color-text);
   cursor: pointer;
 }

@@ -41,6 +41,10 @@ Route::prefix('v1')->group(function () {
 
         Route::get('/students/{student}/grades', [GradeController::class, 'forStudent']);
         Route::get('/students/{student}/academic-record', [StudentController::class, 'academicRecord']);
+
+        Route::get('/users', [UserController::class, 'index']);
     });
+
+    
 
 });
