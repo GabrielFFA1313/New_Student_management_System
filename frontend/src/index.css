@@ -6,9 +6,9 @@
   --color-accent-hover: #eab308;
 
   /* Backgrounds */
-  --color-bg: #f8fdff;            /* white - main background */
-  --color-bg-surface: #f8fdff;    /* very light blue-gray - sidebar, surfaces */
-  --color-bg-elevated: #f8fdff;   /* modals, table headers */
+  --color-bg: #ffffff;            /* white - main background */
+  --color-bg-surface: #ffffff;    /* very light blue-gray - sidebar, surfaces */
+  --color-bg-elevated: #ffffff;   /* modals, table headers */
 
   /* Borders */
   --color-border: #e2e8f0;

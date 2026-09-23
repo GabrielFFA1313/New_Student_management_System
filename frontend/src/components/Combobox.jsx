@@ -51,13 +51,16 @@ export default function Combobox({ options, value, onChange, placeholder, getLab
             <li className="combobox-empty">No matches found</li>
           ) : (
             filteredOptions.map((option) => (
-              <li
-                key={getValue(option)}
-                className={`combobox-option ${getValue(option) === value ? 'selected' : ''}`}
-                onClick={() => handleSelect(option)}
-              >
-                {getLabel(option)}
-              </li>
+             <li
+              key={getValue(option)}
+              className={`combobox-option ${getValue(option) === value ? 'selected' : ''}`}
+              onMouseDown={(e) => {
+                e.preventDefault(); // prevents input blur from firing before the click registers
+                handleSelect(option);
+              }}
+            >
+              {getLabel(option)}
+            </li>
             ))
           )}
         </ul>
