@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\V1\CourseOfferingController;
 use App\Http\Controllers\Api\V1\EnrollmentController;
 use App\Http\Controllers\Api\V1\GradeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\V1\UserController;
 
 Route::prefix('v1')->group(function () {
 
