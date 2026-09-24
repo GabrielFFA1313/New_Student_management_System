@@ -121,10 +121,19 @@ class AuthController extends Controller
 
     public function me(Request $request)
     {
+        $user = $request->user()->load('student');
+
         return response()->json([
             'success' => true,
             'message' => 'Current user retrieved.',
-            'data' => $request->user(),
-        ], 200);
+            'data' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'role' => $user->role,
+                'status' => $user->status,
+                'student_id' => $user->student?->id,
+            ],
+        ]);
     }
 }

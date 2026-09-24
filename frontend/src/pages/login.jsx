@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/authContext';
+import '../styles/Login.css';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -33,7 +34,10 @@ export default function Login() {
     <div className="login-page">
       <form onSubmit={handleSubmit} className="login-form">
         <h1>Student Information Management System</h1>
+        <p className="login-subtitle">Sign in to continue</p>
+
         {error && <div className="error-banner">{error}</div>}
+
         <label>
           Email
           <input
@@ -41,6 +45,7 @@ export default function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            autoFocus
           />
         </label>
         <label>
