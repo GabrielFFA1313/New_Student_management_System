@@ -24,7 +24,9 @@ export default function CourseFormModal({ course, onSubmit, onClose }) {
     try {
       await onSubmit(formData);
     } catch (err) {
-      if (err.response?.status === 422) {
+      if (err.isNetworkError) {
+        setErrors({ _general: err.friendlyMessage });
+      } else if (err.response?.status === 422) {
         setErrors(err.response.data.errors || {});
       } else {
         setErrors({ _general: err.response?.data?.message || 'Something went wrong.' });
@@ -32,7 +34,7 @@ export default function CourseFormModal({ course, onSubmit, onClose }) {
     } finally {
       setSubmitting(false);
     }
-  }
+  } 
 
   return (
     <div className="modal-overlay" onClick={onClose}>

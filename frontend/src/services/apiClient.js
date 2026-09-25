@@ -6,9 +6,9 @@ const apiClient = axios.create({
     'Content-Type': 'application/json',
     Accept: 'application/json',
   },
+  timeout: 15000, // 15s — prevents an infinite hang if the server never responds
 });
 
-// Attach the token to every request automatically, if one exists
 apiClient.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) {
@@ -17,18 +17,24 @@ apiClient.interceptors.request.use((config) => {
   return config;
 });
 
-// Handle common error responses in one place
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
-      // Token invalid/expired — clear it and force re-login
+    // No response at all = network failure (server down, no internet, CORS block, timeout)
+    if (!error.response) {
+      error.isNetworkError = true;
+      error.friendlyMessage = 'Unable to reach the server. Please check your connection and try again.';
+      return Promise.reject(error);
+    }
+
+    if (error.response.status === 401) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       if (window.location.pathname !== '/login') {
         window.location.href = '/login';
       }
     }
+
     return Promise.reject(error);
   }
 );

@@ -70,6 +70,9 @@ export default function CourseOfferings() {
 
   if (isLoading) return <div className="state-message">Loading course offerings...</div>;
   if (isError) {
+    if (error.isNetworkError) {
+      return <div className="state-message error">{error.friendlyMessage}</div>;
+    }
     return (
       <div className="state-message error">
         Failed to load course offerings: {error.response?.data?.message || error.message}

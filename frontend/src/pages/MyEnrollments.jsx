@@ -6,6 +6,9 @@ export default function MyEnrollments() {
 
   if (isLoading) return <div className="state-message">Loading your enrollments...</div>;
   if (isError) {
+    if (error.isNetworkError) {
+      return <div className="state-message error">{error.friendlyMessage}</div>;
+    }
     return (
       <div className="state-message error">
         Failed to load your enrollments: {error.response?.data?.message || error.message}

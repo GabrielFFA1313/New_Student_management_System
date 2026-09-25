@@ -65,6 +65,9 @@ export default function Programs() {
   }
 
   if (isError) {
+    if (error.isNetworkError) {
+      return <div className="state-message error">{error.friendlyMessage}</div>;
+    }
     return (
       <div className="state-message error">
         Failed to load programs: {error.response?.data?.message || error.message}

@@ -55,6 +55,9 @@ export default function Grades() {
 
   if (isLoading) return <div className="state-message">Loading grades...</div>;
   if (isError) {
+    if (error.isNetworkError) {
+      return <div className="state-message error">{error.friendlyMessage}</div>;
+    }
     return (
       <div className="state-message error">
         Failed to load grades: {error.response?.data?.message || error.message}

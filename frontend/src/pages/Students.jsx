@@ -91,6 +91,9 @@ export default function Students() {
 
   if (isLoading) return <div className="state-message">Loading students...</div>;
   if (isError) {
+    if (error.isNetworkError) {
+      return <div className="state-message error">{error.friendlyMessage}</div>;
+    }
     return (
       <div className="state-message error">
         Failed to load students: {error.response?.data?.message || error.message}

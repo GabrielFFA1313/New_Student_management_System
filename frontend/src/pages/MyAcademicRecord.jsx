@@ -6,6 +6,9 @@ export default function MyAcademicRecord() {
 
   if (isLoading) return <div className="state-message">Loading your academic record...</div>;
   if (isError) {
+    if (error.isNetworkError) {
+      return <div className="state-message error">{error.friendlyMessage}</div>;
+    }
     return (
       <div className="state-message error">
         Failed to load your academic record: {error.response?.data?.message || error.message}

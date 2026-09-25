@@ -16,6 +16,7 @@ import MyEnrollments from './pages/MyEnrollments';
 import MyGrades from './pages/MyGrades';
 import MyAcademicRecord from './pages/MyAcademicRecord';
 import Forbidden from './pages/Forbidden';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -124,6 +125,7 @@ function App() {
           </Route>
 
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

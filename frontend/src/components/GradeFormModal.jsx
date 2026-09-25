@@ -28,7 +28,9 @@ export default function GradeFormModal({ grade, onSubmit, onClose }) {
     try {
       await onSubmit(formData);
     } catch (err) {
-      if (err.response?.status === 422) {
+      if (err.isNetworkError) {
+        setErrors({ _general: err.friendlyMessage });
+      } else if (err.response?.status === 422) {
         setErrors(err.response.data.errors || {});
       } else if (err.response?.status === 403) {
         setErrors({ _general: err.response.data.message || 'You may only grade enrollments in your own course offerings.' });
